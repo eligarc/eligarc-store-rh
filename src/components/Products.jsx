@@ -4,7 +4,7 @@ import AppContext from '../context/AppContext';
 import '../styles/components/Products.css';
 
 const Products = () => {
-	const { state: { products }, addToCart } = useContext(AppContext);
+	const { products, addToCart } = useContext(AppContext);
 
 	const handleAddToCart = product => () => {
 		addToCart(product);
@@ -14,7 +14,7 @@ const Products = () => {
 		<div className="Products">
 			<div className="Products-items">
 				{products.map((product) => (
-					<Product key={product.id} product={product} handleAddToCart={handleAddToCart} />
+					product.images.length > 1 && <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />
 				))}
 			</div>
 		</div>

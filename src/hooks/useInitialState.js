@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import initialState from '../../initialState';
+import axios from 'axios';
+
+const API = 'https://api.escuelajs.co/api/v1/products?offset=0&limit=52';
 
 const useInitialState = () => {
 	const [state, setState] = useState(initialState);
+	const [products, setProducts] = useState([]);
 
+	useEffect(() => {
+		async function getProducts() {
+			const response = await axios(API);
+			setProducts(response.data);
+		}
+		getProducts();
+	}, [])
 	const addToCart = product => {
 		setState({
 			...state,
@@ -43,6 +54,7 @@ const useInitialState = () => {
 		removeFromCart,
 		addToBuyer,
 		addNewOrder,
+		products,
 		state
 	};
 };

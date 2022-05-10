@@ -1,18 +1,16 @@
 import React from 'react';
 
 const Product = ({product, handleAddToCart}) => {
+console.log("🚀 ~ file: Product.jsx ~ line 4 ~ Product ~ product", product)
 	return (
 		<div className="Products-item">
-			<img src={product.image} alt={product.title} />
+			<img src={product.images[0]} alt={product.title} />
 			<div className="Product-item-info">
-				<h2>{product.title}
-					<span>
-						$
-						{' '}
-						{product.price}
+				<p className="Product-desc"> {product.title} {" "}
+					<span className="price"> ${product.price}MXN
 					</span>
-				</h2>
-				<p>{product.description}</p>
+				</p>
+				<p className="desc">{product.description}</p>
 			</div>
 			<button type='button' onClick={handleAddToCart(product)}>
 				Comprar
