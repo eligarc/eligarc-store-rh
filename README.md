@@ -1,2 +1,2 @@
-# eligarc-store-rh
+# eligarc-store react hooks
 Tienda online
